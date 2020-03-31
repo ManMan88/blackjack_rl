@@ -69,10 +69,10 @@ class Dealer(Player):
         return ActionSpace().hit
 
 class BlackJackGame:
-    def __init__(self):
+    def __init__(self,dealer_thresh=17):
         # hit is True, stick is False
         self.deck = Deck()
-        self.dealer = Dealer(17)
+        self.dealer = Dealer(dealer_thresh)
         self.player = Player()
         self.state = BlackJackState()
         self.episode_ended = True
