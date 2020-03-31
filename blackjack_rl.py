@@ -144,3 +144,20 @@ class BlackJackGame:
             print("player cards sum: " + str(self.state.player_sum))
             print("dealer cards sum: " + str(self.state.dealer_sum))
             print("")
+
+if __name__ == "__main__":
+    bj = BlackJackGame()
+    bj.run_new_episode(debug=True)
+    
+    while True:
+        action = input("Select an action - 'hit' or 'stick': ")
+        state, reward, done = bj.step(action)
+        if done:
+            break
+ 
+    if reward == 1:
+        print("you won!")
+    elif reward == -1:
+        print("you lost!")
+    else:
+        print("it's a draw!")
