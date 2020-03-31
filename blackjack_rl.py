@@ -44,8 +44,8 @@ class Player:
     def hit_card(self,card):
         # set card value
         if card == 1:
-            card = 11
             if self.state.cards_sum <= 10:
+                card = 11
                 self.state.usable_ace = True
         elif card > 10:
             card = 10
@@ -89,9 +89,10 @@ class BlackJackGame:
         
         if not init_state.player_sum:
             self.dealer.hit_card(self.deck.draw_cards())
+
+        while self.player.state.cards_sum < 12:
             self.player.hit_card(self.deck.draw_cards())
-            self.player.hit_card(self.deck.draw_cards())
-        
+
         self.update_state()
         self.print_state()
 
@@ -143,4 +144,3 @@ class BlackJackGame:
             print("player cards sum: " + str(self.state.player_sum))
             print("dealer cards sum: " + str(self.state.dealer_sum))
             print("")
- 
